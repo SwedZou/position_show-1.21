@@ -15,7 +15,7 @@ public class KeyInputHandler {
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(minecraftClient -> {
-            if (ShowHideFpsKey.isPressed()) {
+            if (ShowHideFpsKey.wasPressed()) {
                 // Toggle the visibility of the FPS display
                 Position_show.showFPS = !Position_show.showFPS;
             }
