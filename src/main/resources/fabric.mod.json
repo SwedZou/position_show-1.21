@@ -20,6 +20,9 @@
 		],
 		"fabric-datagen": [
 			"swedzou.position_show.Position_showDataGenerator"
+		],
+		"client": [
+			"swedzou.position_show.Position_showClient"
 		]
 	},
 	"mixins": [
