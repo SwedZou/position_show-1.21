@@ -13,9 +13,10 @@ import java.text.DecimalFormat;
 public class Position_show implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("position_show");
 	public static boolean showFPS = true;
+	public static boolean showCoordinates = true;
 
 	MinecraftClient client = MinecraftClient.getInstance();
-	DecimalFormat numberFormat = new DecimalFormat("#.000");
+	DecimalFormat numberFormat = new DecimalFormat("#.0000");
 
 
 	@Override
@@ -24,15 +25,11 @@ public class Position_show implements ModInitializer {
 		HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
 			if (showFPS) {
 				drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps(), 2, 2, 0xFFFFFFFF, false);
-            }
-
-
-			String text = "X: " + numberFormat.format(client.player.getX()) + ", Y: " + numberFormat.format(client.player.getY()) + ", Z: " + numberFormat.format(client.player.getZ());
-
-			// LOGGER.info(String.valueOf(Math.round(((float) client.g / 2) - ((float) client.textRenderer.getWidth(text) / 2))));
-			// LOGGER.info(String.valueOf(client.getWindow().getWidth()));
-
-			drawContext.drawText(client.textRenderer, text, 500, 400, 0xFFFFFFFF, false);
+            };
+			if (showCoordinates) {
+				String text = "X: " + numberFormat.format(client.player.getX()) + ", Y: " + numberFormat.format(client.player.getY()) + ", Z: " + numberFormat.format(client.player.getZ());
+				drawContext.drawText(client.textRenderer, text, 2, 20, 0xFFFFFFFF, false);
+			}
 		});
 	}
 }

@@ -8,17 +8,21 @@ import org.lwjgl.glfw.GLFW;
 import swedzou.position_show.Position_show;
 
 public class KeyInputHandler {
-    public static final String KEY_CATEGORY_TUTORIAL = "key.category.position_show.tutorial";
-    public static final String KEY_SHOW_HIDE_FPS = "key.position_show.show_hide_fps";
+    public static final String KEY_CATEGORY_TUTORIAL = "key.category.position_show.show_hide";
+    public static final String KEY_SHOW_HIDE_FPS = "key.position_show.show_hide.fps";
+    public static final String KEY_SHOW_HIDE_COORDINATES = "key.position_show.show_hide.coordinates";
 
     public static KeyBinding ShowHideFpsKey;
+    public static KeyBinding ShowHideCoordinatesKey;
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(minecraftClient -> {
             if (ShowHideFpsKey.wasPressed()) {
                 // Toggle the visibility of the FPS display
                 Position_show.showFPS = !Position_show.showFPS;
-            }
+            } else if (ShowHideCoordinatesKey.wasPressed()) {
+                Position_show.showCoordinates =!Position_show.showCoordinates;
+            };
         });
     }
 
@@ -28,6 +32,12 @@ public class KeyInputHandler {
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_R,
             KEY_CATEGORY_TUTORIAL
+        ));
+        ShowHideCoordinatesKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                KEY_SHOW_HIDE_COORDINATES,
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_P,
+                KEY_CATEGORY_TUTORIAL
         ));
 
         registerKeyInputs();
