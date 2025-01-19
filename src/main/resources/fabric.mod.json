@@ -3,7 +3,7 @@
 	"id": "position_show",
 	"version": "${version}",
 	"name": "position_show",
-	"description": "This mods shows you your location over your hotbar and shows your fps at the top left corner.",
+	"description": "This mods shows you your location and your fps at the top left corner.",
 	"authors": [
 		"SwedZou"
 	],
@@ -29,8 +29,8 @@
 		"position_show.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.10",
-		"minecraft": "~1.21",
+		"fabricloader": ">=0.16.0",
+		"minecraft": ">1.21",
 		"java": ">=21",
 		"fabric-api": "*"
 	},

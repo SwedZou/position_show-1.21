@@ -14,6 +14,7 @@ public class Position_show implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("position_show");
 	public static boolean showFPS = true;
 	public static boolean showCoordinates = true;
+	public static boolean moreFps = false;
 
 	MinecraftClient client = MinecraftClient.getInstance();
 	DecimalFormat numberFormat = new DecimalFormat("#.0000");
@@ -24,7 +25,11 @@ public class Position_show implements ModInitializer {
 
 		HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
 			if (showFPS) {
-				drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps(), 2, 2, 0xFFFFFFFF, false);
+				if (moreFps) {
+					drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps() * 3, 2, 2, 0xFFFFFFFF, false);
+				} else {
+					drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps(), 2, 2, 0xFFFFFFFF, false);
+				}
             };
 			if (showCoordinates) {
 				String text = "X: " + numberFormat.format(client.player.getX()) + ", Y: " + numberFormat.format(client.player.getY()) + ", Z: " + numberFormat.format(client.player.getZ());

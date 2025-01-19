@@ -11,18 +11,25 @@ public class KeyInputHandler {
     public static final String KEY_CATEGORY_TUTORIAL = "key.category.position_show";
     public static final String KEY_SHOW_HIDE_FPS = "key.position_show.show_hide.fps";
     public static final String KEY_SHOW_HIDE_COORDINATES = "key.position_show.show_hide.coordinates";
+    public static final String MORE_FPS = "key.position_show.more.fps";
 
     public static KeyBinding ShowHideFpsKey;
     public static KeyBinding ShowHideCoordinatesKey;
+    public static KeyBinding MoreFpsKey;
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(minecraftClient -> {
             if (ShowHideFpsKey.wasPressed()) {
                 // Toggle the visibility of the FPS display
                 Position_show.showFPS = !Position_show.showFPS;
-            } else if (ShowHideCoordinatesKey.wasPressed()) {
+            };
+            if (ShowHideCoordinatesKey.wasPressed()) {
+                // toggles the visibility of the coordinates display
                 Position_show.showCoordinates =!Position_show.showCoordinates;
             };
+            if (MoreFpsKey.wasPressed()) {
+                Position_show.moreFps = !Position_show.moreFps;
+            }
         });
     }
 
@@ -37,6 +44,12 @@ public class KeyInputHandler {
                 KEY_SHOW_HIDE_COORDINATES,
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_P,
+                KEY_CATEGORY_TUTORIAL
+        ));
+        MoreFpsKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+                MORE_FPS,
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_F19,
                 KEY_CATEGORY_TUTORIAL
         ));
 
