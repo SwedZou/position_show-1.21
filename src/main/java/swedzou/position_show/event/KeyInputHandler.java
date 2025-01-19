@@ -8,7 +8,7 @@ import org.lwjgl.glfw.GLFW;
 import swedzou.position_show.Position_show;
 
 public class KeyInputHandler {
-    public static final String KEY_CATEGORY_TUTORIAL = "key.category.position_show.show_hide";
+    public static final String KEY_CATEGORY_TUTORIAL = "key.category.position_show";
     public static final String KEY_SHOW_HIDE_FPS = "key.position_show.show_hide.fps";
     public static final String KEY_SHOW_HIDE_COORDINATES = "key.position_show.show_hide.coordinates";
 
