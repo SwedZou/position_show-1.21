@@ -26,7 +26,7 @@ public class Position_show implements ModInitializer {
 		HudRenderCallback.EVENT.register((drawContext, tickCounter) -> {
 			if (showFPS) {
 				if (moreFps) {
-					drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps() * 3, 2, 2, 0xFFFFFFFF, false);
+					drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps() * 5, 2, 2, 0xFFFFFFFF, false);
 				} else {
 					drawContext.drawText(client.textRenderer, "FPS: " + client.getCurrentFps(), 2, 2, 0xFFFFFFFF, false);
 				}
